@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pro Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial;
+    background: #0b1220;
+    color: white;
+  }
+
+  header {
+    padding: 20px;
+    background: #111827;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .num {
+    font-size: 26px;
+    color: #38bdf8;
+    margin-top: 10px;
+  }
+
+  .charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  canvas {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 14px;
+  }
+
+  @media(max-width: 800px){
+    .charts { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+
+<header>📊 Pro Analytics Dashboard</header>
+
+<div class="grid">
+
+  <div class="card">
+    <h3>Revenue</h3>
+    <div class="num">$18,240</div>
+  </div>
+
+  <div class="card">
+    <h3>Leads</h3>
+    <div class="num">2,140</div>
+  </div>
+
+  <div class="card">
+    <h3>Conversion</h3>
+    <div class="num">6.2%</div>
+  </div>
+
+  <div class="card">
+    <h3>Traffic</h3>
+    <div class="num">48,900</div>
+  </div>
+
+</div>
+
+<div class="charts">
+
+  <canvas id="lineChart"></canvas>
+  <canvas id="barChart"></canvas>
+
+</div>
+
+<script>
+  // Line Chart
+  new Chart(document.getElementById("lineChart"), {
+    type: "line",
+    data: {
+      labels: ["Jan","Feb","Mar","Apr","May","Jun"],
+      datasets: [{
+        label: "Revenue",
+        data: [12000, 15000, 13000, 17000, 19000, 18240],
+        borderColor: "#38bdf8",
+        backgroundColor: "rgba(56,189,248,0.2)",
+        fill: true
+      }]
+    }
+  });
+
+  // Bar Chart
+  new Chart(document.getElementById("barChart"), {
+    type: "bar",
+    data: {
+      labels: ["Google","Snapchat","Meta","TikTok"],
+      datasets: [{
+        label: "Leads",
+        data: [800, 1200, 600, 950],
+        backgroundColor: "#38bdf8"
+      }]
+    }
+  });
+</script>
+
+</body>
+</html>
